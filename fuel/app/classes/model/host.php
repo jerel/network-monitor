@@ -6,7 +6,6 @@ class Model_Host extends Model
 	protected static $_properties = array(
 		'id',
 		'location',
-		'frequency',
 		'notify_email',
 		'notify_call',
 		'notify_sms',
@@ -30,7 +29,6 @@ class Model_Host extends Model
 	{
 		$val = Validation::forge($factory);
 		$val->add_field('location', 'Location', 'required|max_length[255]');
-		$val->add_field('frequency', 'Frequency', 'required|numeric_min[1]');
 		$val->add_field('notify_email', 'Notify Email', 'required|max_length[255]');
 		$val->add_field('notify_call', 'Notify Call', 'max_length[255]');
 		$val->add_field('notify_sms', 'Notify Sms', 'max_length[255]');

@@ -2,6 +2,7 @@
 
 namespace Fuel\Tasks;
 use Model\Network;
+use Model\Log;
 
 /**
  * Monitor a network
@@ -11,7 +12,7 @@ use Model\Network;
  * @author		Jerel Unruh
  */
 
-class Monitor extends \Controller
+class Monitor
 {
 	private static $location = './public/network/'; // log storage location
 	private static $downtime = array();
@@ -30,10 +31,11 @@ class Monitor extends \Controller
 	public static function run()
 	{
 		$hosts = array('192.168.1.1', '192.168.1.254');
-		$data = array();
 
 		while(1)
 		{
+			$data = array();
+
 			foreach ($hosts as $host)
 			{
 				$result = Network::ping(trim($host));
@@ -50,7 +52,7 @@ class Monitor extends \Controller
 				}
 				else
 				{
-					// it's (back?) up
+					// it's (back?) up reset the downtime counter
 					self::$downtime[$result['location']] = array();
 				}
 
@@ -62,7 +64,14 @@ class Monitor extends \Controller
 				}
 			}
 
-			Network::write_log($data, self::$location);
+			// save the log to the database
+			$log = new \Model_Log();
+			$log->log_data = json_encode($data);
+			$log->save();
+
+			// clean up old logs
+
+			unset($data);
 
 			sleep(self::$ping_frequency);
 		}

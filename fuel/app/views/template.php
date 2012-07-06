@@ -9,6 +9,26 @@
 	</style>
 </head>
 <body>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li>
+							<?php echo Html::anchor('host', 'Host'); ?>
+						</li>
+						<li>
+							<?php echo Html::anchor('logs', 'Logs'); ?>
+						</li>
+						<li>
+							<?php echo Html::anchor('settings', 'Settings'); ?>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="container">
 		<div class="row">
 			<div class="span16">

@@ -31,7 +31,6 @@ class Controller_Host extends Controller_Template
 			{
 				$host = Model_Host::forge(array(
 					'location' => Input::post('location'),
-					'frequency' => Input::post('frequency'),
 					'notify_email' => Input::post('notify_email'),
 					'notify_call' => Input::post('notify_call'),
 					'notify_sms' => Input::post('notify_sms'),
@@ -72,7 +71,6 @@ class Controller_Host extends Controller_Template
 		if ($val->run())
 		{
 			$host->location = Input::post('location');
-			$host->frequency = Input::post('frequency');
 			$host->notify_email = Input::post('notify_email');
 			$host->notify_call = Input::post('notify_call');
 			$host->notify_sms = Input::post('notify_sms');
@@ -96,7 +94,6 @@ class Controller_Host extends Controller_Template
 			if (Input::method() == 'POST')
 			{
 				$host->location = $val->validated('location');
-				$host->frequency = $val->validated('frequency');
 				$host->notify_email = $val->validated('notify_email');
 				$host->notify_call = $val->validated('notify_call');
 				$host->notify_sms = $val->validated('notify_sms');

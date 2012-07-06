@@ -11,15 +11,6 @@
 			</div>
 		</div>
 		<div class="clearfix">
-			<?php echo Form::label('Ping Frequency', 'frequency'); ?>
-			<span>How many minutes shall pass between pings to this machine?</span>
-
-			<div class="input">
-				<?php echo Form::input('frequency', Input::post('frequency', isset($host) ? $host->frequency : ''), array('class' => 'span6')); ?>
-
-			</div>
-		</div>
-		<div class="clearfix">
 			<?php echo Form::label('Notify email', 'notify_email'); ?>
 			<span>Email address to notify if this machine goes down. Separate multiple addresses with a comma.</span>
 
@@ -57,7 +48,7 @@
 		</div>
 		<div class="actions">
 			<?php echo Form::submit('submit', 'Save', array('class' => 'btn primary')); ?>
-
+			<?php echo Html::anchor('host', 'Back', array('class' => 'btn')); ?>
 		</div>
 	</fieldset>
 <?php echo Form::close(); ?>
