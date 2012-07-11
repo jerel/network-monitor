@@ -16,14 +16,124 @@ class Create_settings
 
 		), array('id'));
 
-		$query = \DB::insert('settings');
+		\DB::insert('settings')->set(array(
+		    'slug' => 'organization_name',
+		    'value' => 'Company Name',
+		    'required' => 1,
+		    )
+		)->execute();
 
-		// Set the columns and values
-		$query->set(array(
-		    'slug' => 'frequency',
+		\DB::insert('settings')->set(array(
+		    'slug' => 'notify_sms',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'notify_email',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'ping_frequency',
 		    'value' => 60,
 		    'required' => 1,
-		))->execute();
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'downtime_allowed',
+		    'value' => 300,
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'notification_frequency',
+		    'value' => 900,
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'twilio_account_sid',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'twilio_auth_token',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'twilio_from_phone_number',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'email_driver',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'email_address_from',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'email_name_from',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'email_subject',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'smtp_host',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'smtp_port',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'smtp_username',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
+
+		\DB::insert('settings')->set(array(
+		    'slug' => 'smtp_password',
+		    'value' => '',
+		    'required' => 1,
+		    )
+		)->execute();
 	}
 
 	public function down()

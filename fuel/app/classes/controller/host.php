@@ -31,10 +31,7 @@ class Controller_Host extends Controller_Template
 			{
 				$host = Model_Host::forge(array(
 					'location' => Input::post('location'),
-					'notify_email' => Input::post('notify_email'),
-					'notify_call' => Input::post('notify_call'),
-					'notify_sms' => Input::post('notify_sms'),
-					'downtime_allowed' => Input::post('downtime_allowed'),
+					'monitor' => Input::post('monitor') > '' OR 1,
 				));
 
 				if ($host and $host->save())
@@ -71,10 +68,7 @@ class Controller_Host extends Controller_Template
 		if ($val->run())
 		{
 			$host->location = Input::post('location');
-			$host->notify_email = Input::post('notify_email');
-			$host->notify_call = Input::post('notify_call');
-			$host->notify_sms = Input::post('notify_sms');
-			$host->downtime_allowed = Input::post('downtime_allowed');
+			$host->monitor = Input::post('monitor');
 
 			if ($host->save())
 			{
@@ -94,10 +88,7 @@ class Controller_Host extends Controller_Template
 			if (Input::method() == 'POST')
 			{
 				$host->location = $val->validated('location');
-				$host->notify_email = $val->validated('notify_email');
-				$host->notify_call = $val->validated('notify_call');
-				$host->notify_sms = $val->validated('notify_sms');
-				$host->downtime_allowed = $val->validated('downtime_allowed');
+				$host->monitor = $val->validated('monitor');
 
 				Session::set_flash('error', $val->error());
 			}

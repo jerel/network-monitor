@@ -66,6 +66,15 @@ class Controller_Settings extends Controller_Template
 
 		$val = Model_Setting::validate('edit');
 
+		if ($setting->slug === 'ping_frequency')
+		{
+			$val->add_field('value', 'Value', 'required|numeric_min[30]');
+		}
+		elseif (strpos($setting->slug, 'notify_') === false)
+		{
+			$val->add_field('value', 'Value', 'required');
+		}
+
 		if ($val->run())
 		{
 			$setting->slug = Input::post('slug');

@@ -4,7 +4,7 @@ class Controller_Logs extends Controller_Template
 
 	public function action_index()
 	{
-		$data['logs'] = Model_Log::find('all');
+		$data['logs'] = Model_Log::find('all', array('limit' => 10));
 		$this->template->title = "Logs";
 		$this->template->content = View::forge('logs/index', $data);
 

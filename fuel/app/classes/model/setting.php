@@ -27,8 +27,8 @@ class Model_Setting extends Model
 	{
 		$val = Validation::forge($factory);
 		$val->add_field('slug', 'Slug', 'required|max_length[255]');
-		$val->add_field('value', 'Value', 'required');
-		$val->add_field('required', 'Required', 'required');
+		// value is added from the controller
+		$val->add_field('required', 'Required', 'required|match_pattern[/^[0-1]$/]');
 
 		return $val;
 	}

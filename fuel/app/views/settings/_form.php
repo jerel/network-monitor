@@ -5,8 +5,12 @@
 			<?php echo Form::label('Slug', 'slug'); ?>
 
 			<div class="input">
-				<?php echo Form::input('slug', Input::post('slug', isset($setting) ? $setting->slug : ''), array('class' => 'span6')); ?>
-
+				<?php if (isset($setting) and $setting->required): ?>
+					<span class="6"><?php echo isset($setting) ? $setting->slug : ''; ?></span>
+					<?php echo Form::hidden('slug', $setting->slug); ?>
+				<?php else: ?>
+					<?php echo Form::input('slug', Input::post('slug', isset($setting) ? $setting->slug : ''), array('class' => 'span6')); ?>
+				<?php endif; ?>
 			</div>
 		</div>
 		<div class="clearfix">
@@ -22,7 +26,6 @@
 
 			<div class="input">
 				<?php echo Form::input('required', Input::post('required', isset($setting) ? $setting->required : ''), array('class' => 'span6')); ?>
-
 			</div>
 		</div>
 		<div class="actions">

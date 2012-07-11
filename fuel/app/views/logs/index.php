@@ -1,4 +1,7 @@
 <h2>Listing Logs</h2>
+<p>If logs are not being generated open a terminal and run these commands:</p>
+<pre><code>cd <?php echo str_replace('/fuel/app/', '', APPPATH); ?> 
+sudo php oil r monitor</code></pre>
 <br>
 <?php if ($logs): ?>
 <table class="zebra-striped">

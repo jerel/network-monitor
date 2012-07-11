@@ -5,11 +5,7 @@
 	<thead>
 		<tr>
 			<th>Location</th>
-			<th>Ping Frequency</th>
-			<th>Notify Email</th>
-			<th>Notify Phone</th>
-			<th>Notify SMS</th>
-			<th>Downtime Allowed</th>
+			<th>Monitoring</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -17,11 +13,7 @@
 		<?php foreach ($hosts as $host): ?>		
 			<tr>
 				<td><?php echo $host->location; ?></td>
-				<td><?php echo $host->frequency; ?> minutes</td>
-				<td><?php echo $host->notify_email; ?></td>
-				<td><?php echo $host->notify_call; ?></td>
-				<td><?php echo $host->notify_sms; ?></td>
-				<td><?php echo $host->downtime_allowed; ?> seconds</td>
+				<td><?php echo $host->monitor; ?></td>
 				<td>
 					<?php echo Html::anchor('host/view/'.$host->id, 'View'); ?> |
 					<?php echo Html::anchor('host/edit/'.$host->id, 'Edit'); ?> |

@@ -4,9 +4,6 @@
 	<strong>Location:</strong>
 	<?php echo $host->location; ?></p>
 <p>
-	<strong>Frequency:</strong>
-	<?php echo $host->frequency; ?></p>
-<p>
 	<strong>Notify email:</strong>
 	<?php echo $host->notify_email; ?></p>
 <p>

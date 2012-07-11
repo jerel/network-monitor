@@ -4,8 +4,6 @@ namespace Model;
 
 class Network extends \Model{
 
-	public static $current_log = false;
-
 	public static function ping($host = '192.168.1.1', $timeout = 1)
 	{
 		/* ICMP ping packet with a pre-calculated checksum */
@@ -29,20 +27,5 @@ class Network extends \Model{
 		socket_close($socket);
 
 		return array('up' => (bool) $result, 'location' => $host, 'latency' => $result, 'down_at' => false);
-	}
-
-	public static function write_log($data, $log_location)
-	{
-		$folder = $log_location.date('Y/F').'/';
-		$filename = date('H:00').'.json';
-		self::$current_log = $folder.'/'.$filename;
-
-		is_dir($folder) OR mkdir($folder, 0777, TRUE);
-
-		$fh = fopen($folder.'/'.$filename, 'a');
-		fwrite($fh, json_encode($data)."\n");
-		fclose($fh);
-
-		return true;
 	}
 }
